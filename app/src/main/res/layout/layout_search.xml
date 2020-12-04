@@ -4,8 +4,10 @@
     android:id="@+id/search"
     style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
     android:hint="@string/search_hint_string"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
     app:boxBackgroundMode="none"
-    app:hintTextAppearance="@style/NormalText"
+    app:hintTextAppearance="@style/Text"
     app:startIconDrawable="@drawable/ic_search">
 
     <com.google.android.material.textfield.TextInputEditText
