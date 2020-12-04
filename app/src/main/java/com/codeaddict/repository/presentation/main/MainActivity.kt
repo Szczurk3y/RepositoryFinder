@@ -6,6 +6,7 @@ import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
 import com.codeaddict.repository.R
 import com.codeaddict.repository.framework.navigation.INavigator
+import com.codeaddict.repository.framework.toolbar.NoToolbar
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
 
@@ -13,6 +14,8 @@ import javax.inject.Inject
 class MainActivity : AppCompatActivity(R.layout.activity_main) {
 
     @Inject lateinit var navigator: INavigator
+
+    @Inject lateinit var toolbar: NoToolbar
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -23,5 +26,11 @@ class MainActivity : AppCompatActivity(R.layout.activity_main) {
         navigator.apply {
             setup(navController)
         }
+
+        toolbar.apply {
+            initToolbar()
+        }
+
+
     }
 }
