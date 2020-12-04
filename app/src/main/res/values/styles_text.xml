@@ -17,4 +17,16 @@
     <style name="HeaderText" parent="Text.Bold">
         <item name="android:textSize">@dimen/fontNormal</item>
     </style>
+
+    <style name="DescriptionText" parent="Text">
+        <item name="android:textColor">@color/description_color_gray</item>
+    </style>
+
+    <style name="NormalText" parent="Text">
+        <item name="android:textColor">@color/white</item>
+    </style>
+
+    <style name="MediumText">
+        <item name="android:textSize">@dimen/fontMedium</item>
+    </style>
 </resources>

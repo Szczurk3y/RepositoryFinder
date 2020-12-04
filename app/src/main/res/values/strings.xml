@@ -2,4 +2,6 @@
     <string name="app_name">CodeAddictRepository</string>
     <string name="search_string">Search</string>
     <string name="search_hint_string">Search…</string>
+    <string name="repo_by_string">Repo by</string>
+    <string name="back_string">Back</string>
 </resources>
