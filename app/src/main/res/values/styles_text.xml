@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="Text">
+        <item name="android:fontFamily">@font/sf_pro_display</item>
+        <item name="fontFamily">@font/sf_pro_display</item>
+        <item name="android:textSize">@dimen/fontNormal</item>
+    </style>
+
+    <style name="Text.Bold">
+        <item name="android:fontFamily">@font/sf_pro_display</item>
+        <item name="fontFamily">@font/sf_pro_display</item>
+    </style>
+
+
+    <style name="HeaderLargeText" parent="Text.Bold">
+        <item name="android:textSize">@dimen/fontHeaderLarge</item>
+    </style>
+
+    <style name="NormalText" parent="Text">
+        <item name="android:textSize">@dimen/fontNormal</item>
+    </style>
+</resources>

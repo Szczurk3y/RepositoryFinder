@@ -2,7 +2,7 @@
     <!-- Base application theme. -->
     <style name="BaseAppTheme" parent="Theme.MaterialComponents.Light.NoActionBar">
         <item name="colorPrimary">@color/white</item>
-        <item name="colorOnPrimary">@color/grey</item>
+        <item name="colorOnPrimary">@color/gray</item>
         <!-- Secondary brand color. -->
         <item name="colorSecondary">@color/blue</item>
         <item name="colorSecondaryVariant">@color/blue_variant</item>
@@ -10,4 +10,13 @@
         <!-- Customize your theme here. -->
         <item name="android:windowBackground">@color/white</item>
     </style>
+
+
+<!--    <style name="Widget.App.TextInputLayout" parent="Widget.MaterialComponents.TextInputLayout.OutlinedBox">-->
+<!--        <item name="materialThemeOverlay">@style/ThemeOverlay.App.TextInputLayout</item>-->
+<!--        <item name="shapeAppearance">@style/ShapeAppearance.App.SmallComponent</item>-->
+<!--        <item name="hintTextColor">?attr/colorOnSurface</item>-->
+<!--    </style>-->
+
+
 </resources>
