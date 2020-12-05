@@ -1,5 +1,4 @@
 <?xml version="1.0" encoding="utf-8"?>
 <adaptive-icon xmlns:android="http://schemas.android.com/apk/res/android">
-    <background android:drawable="@drawable/ic_star_filled_background"/>
-    <foreground android:drawable="@drawable/ic_arrow_left"/>
+    <foreground android:drawable="@drawable/ic_share"/>
 </adaptive-icon>

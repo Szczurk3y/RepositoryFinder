@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+
     <style name="Text">
         <item name="android:textSize">@dimen/fontNormal</item>
     </style>
@@ -14,8 +15,18 @@
         <item name="android:textSize">@dimen/fontHeaderLarge</item>
     </style>
 
+    <style name="HeaderMediumText" parent="Text.Bold">
+        <item name="android:textSize">@dimen/fontHeaderMedium</item>
+    </style>
+
     <style name="HeaderText" parent="Text.Bold">
         <item name="android:textSize">@dimen/fontNormal</item>
+    </style>
+
+    <style name="HeaderSmall" parent="Text.Bold">
+        <item name="android:textSize">@dimen/fontHeaderSmall</item>
+        <item name="android:textColor">@color/blue</item>
+        <item name="android:letterSpacing">0.07</item>
     </style>
 
     <style name="DescriptionText" parent="Text">
