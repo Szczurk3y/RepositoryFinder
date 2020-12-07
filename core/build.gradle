@@ -1,6 +1,7 @@
 plugins {
     id 'java-library'
-    id 'kotlin'
+    id 'kotlin-android-extensions'
+    id 'kotlin-android'
 }
 
 java {
@@ -8,6 +9,10 @@ java {
     targetCompatibility = JavaVersion.VERSION_1_7
 }
 
+
 dependencies {
     implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
+
+    // Retrofit
+    implementation "com.squareup.retrofit2:retrofit:$retrofit_version"
 }

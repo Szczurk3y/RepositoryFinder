@@ -1,6 +1,5 @@
 // Top-level build file where you can add configuration options common to all sub-projects/modules.
 buildscript {
-
     ext {
         kotlin_version = "1.4.20"
         nav_version = "2.3.2"
@@ -29,9 +28,13 @@ ext {
     lifecycle_version = "2.2.0"
     arch_version = "2.1.0"
     hilt_viewmodel_version = "1.0.0-alpha02"
+    moshi_converter = "2.5.0"
+    ok_http_version = "3.12.1"
     junit_version = '5.3.2'
     glide_version = '4.11.0'
-    paging_version = '3.0.0-alpha05'
+    retrofit_version = '2.9.0'
+    paging_version = '3.0.0-alpha10'
+    moshi_version = '1.11.0'
 }
 
 allprojects {
