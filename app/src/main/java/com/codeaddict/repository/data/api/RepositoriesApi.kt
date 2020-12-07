@@ -1,6 +1,7 @@
 package com.codeaddict.repository.data.api
 
 import com.codeaddict.repository.domain.RawRepo
+import com.codeaddict.repository.domain.RepositoriesResponse
 import retrofit2.http.GET
 import retrofit2.http.Headers
 import retrofit2.http.Query
@@ -17,7 +18,7 @@ interface RepositoriesApi {
         @Query("q") query: String,
         @Query("page") page: Int,
         @Query("per_page") perPage: Int
-    ): RawRepo
+    ): RepositoriesResponse
 
 //    @Headers("Content-Type:application/json")
 //    @GET("repos")

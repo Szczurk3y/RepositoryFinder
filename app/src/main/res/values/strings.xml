@@ -8,4 +8,8 @@
     <string name="commits_history_string">Commits History</string>
     <string name="share_repo_string">Share Repo</string>
     <string name="share_icon_description">Share</string>
+    <string name="results_could_not_be_loaded_string">Results could not be loaded</string>
+    <string name="repos_could_not_be_loaded_string">Repos could not be loaded</string>
+    <string name="retry_string">Retry</string>
+    <string name="no_repos_found_for_this_query_string">No repos found for this query</string>
 </resources>

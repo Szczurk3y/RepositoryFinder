@@ -65,4 +65,5 @@ object NetworkModule {
     @Singleton
     fun provideRepositoriesApi(retrofit: Retrofit): RepositoriesApi =
         retrofit.create(RepositoriesApi::class.java)
+
 }

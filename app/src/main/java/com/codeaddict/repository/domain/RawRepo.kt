@@ -12,8 +12,6 @@ data class RawRepo(
     @Json(name = "full_name") val fullName: String,
     val private: Boolean,
     val owner: Owner,
-    @Json(name = "commits_url") val commitsUrl: String,
-    val description: String,
     @Json(name = "stargazers_count") val stargazersCount: Int
 ) : Parcelable {
     @Parcelize
