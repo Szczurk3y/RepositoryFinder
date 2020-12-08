@@ -138,6 +138,7 @@
             android:layout_alignParentEnd="true"
             android:layout_marginTop="@dimen/space_1_5x"
             android:layout_marginBottom="@dimen/space_1_5x"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
             tools:itemCount="3"
             tools:listitem="@layout/item_commit" />
 

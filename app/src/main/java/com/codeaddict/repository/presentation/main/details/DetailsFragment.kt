@@ -12,6 +12,7 @@ import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions
 import com.codeaddict.repository.R
 import com.codeaddict.repository.databinding.FragmentDetailsBinding
 import com.codeaddict.repository.databinding.FragmentListBinding
+import com.codeaddict.repository.domain.CommitListItem
 import com.codeaddict.repository.domain.RawRepo
 import com.codeaddict.repository.framework.navigation.INavigator
 import dagger.hilt.android.AndroidEntryPoint
@@ -39,6 +40,8 @@ class DetailsFragment : Fragment(R.layout.fragment_details) {
             navigator.goBack()
         }
 
+        val adapter = CommitsAdapter()
+
         viewmodel.commitsLiveData.observe(viewLifecycleOwner) { commits ->
             binding.apply {
                 rlHeader.visibility = View.VISIBLE
@@ -54,6 +57,9 @@ class DetailsFragment : Fragment(R.layout.fragment_details) {
                     .transition(DrawableTransitionOptions.withCrossFade())
                     .error(R.drawable.ic_error)
                     .into(ivAuthorBackground)
+                rvCommits.adapter = adapter.also {
+                    it.submitList(commits)
+                }
             }
         }
 

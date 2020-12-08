@@ -6,29 +6,29 @@ import kotlinx.android.parcel.Parcelize
 
 @Parcelize
 data class RawCommit(
-    private val sha: String,
-    private val commit: Commit,
-    private val author: Author
+    val sha: String,
+    val commit: Commit,
+    val author: Author
 ) : Parcelable {
 
     @Parcelize
     data class Commit(
-        private val author: CommitAuthor,
-        private val message: String
+        val author: CommitAuthor,
+        val message: String
     ) : Parcelable {
 
         @Parcelize
         data class CommitAuthor(
-            private val name: String,
-            private val email: String
+            val name: String,
+            val email: String
         ) : Parcelable
 
     }
 
     @Parcelize
     data class Author(
-        @Json(name = "login") private val name: String,
-        @Json(name = "avatar_url") private val avatarUrl: String
+        @Json(name = "login") val name: String,
+        @Json(name = "avatar_url") val avatarUrl: String
     ) : Parcelable
 
 }

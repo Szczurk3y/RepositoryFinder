@@ -6,6 +6,7 @@ import androidx.paging.Pager
 import androidx.paging.PagingConfig
 import androidx.paging.PagingData
 import androidx.paging.liveData
+import com.codeaddict.repository.domain.CommitListItem
 import com.codeaddict.repository.domain.DetailsResult
 import com.codeaddict.repository.domain.RawCommit
 import com.codeaddict.repository.domain.RawRepo
@@ -32,7 +33,13 @@ class RepositoryImpl @Inject constructor(private val repositoriesApi: Repositori
 
     suspend fun fetchRepoDetails(login: String, repo: String, pageSize: Int = 3): DetailsResult {
         return try {
-            val items = repositoriesApi.getRepoDetails(login, repo, pageSize)
+            val items = repositoriesApi.getRepoDetails(login, repo, pageSize).map { raw_commit ->
+                CommitListItem(
+                    author = raw_commit.author.name,
+                    authorEmail = raw_commit.commit.author.email,
+                    message = raw_commit.commit.message
+                )
+            }
             DetailsResult.Success(items)
         } catch (error: Exception) {
             DetailsResult.Error(error.localizedMessage ?: "Connection problem")

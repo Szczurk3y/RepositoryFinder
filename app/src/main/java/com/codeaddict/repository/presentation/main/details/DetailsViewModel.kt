@@ -9,6 +9,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.codeaddict.repository.data.api.RepositoriesApi
 import com.codeaddict.repository.data.api.RepositoryImpl
+import com.codeaddict.repository.domain.CommitListItem
 import com.codeaddict.repository.domain.DetailsResult
 import com.codeaddict.repository.domain.RawCommit
 import com.codeaddict.repository.domain.RawRepo
@@ -19,7 +20,7 @@ class DetailsViewModel @ViewModelInject constructor(
     @Assisted state: SavedStateHandle
 ) : ViewModel() {
 
-    val commitsLiveData: MutableLiveData<List<RawCommit>> = MutableLiveData()
+    val commitsLiveData: MutableLiveData<List<CommitListItem>> = MutableLiveData()
     val errorsLiveData: MutableLiveData<String> = MutableLiveData()
 
     fun getRepoDetails(login: String, repo: String) {
