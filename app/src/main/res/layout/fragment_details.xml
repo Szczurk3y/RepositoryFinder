@@ -13,21 +13,42 @@
         app:layout_constraintGuide_percent="0.33" />
 
     <RelativeLayout
-        android:id="@+id/image_layout"
+        android:id="@+id/rl_header"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:padding="@dimen/space_3x"
+        android:visibility="gone"
         app:layout_constraintBottom_toTopOf="@id/one_third_guideline"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        tools:background="@drawable/details_image_placeholder">
+        tools:visibility="visible">
+
+        <ImageView
+            android:id="@+id/iv_author_background"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            tools:background="@drawable/details_image_placeholder" />
+
+        <TextView
+            android:id="@+id/tv_back"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginTop="@dimen/space_3x"
+            android:clickable="true"
+            android:focusable="true"
+            android:gravity="center"
+            android:text="@string/back_string"
+            android:textAppearance="@style/NormalText"
+            app:drawableStartCompat="@drawable/ic_arrow_left" />
 
         <TextView
             android:id="@+id/tv_repo_by"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_above="@id/tv_author_name"
+            android:layout_marginStart="@dimen/space_3x"
             android:alpha=".7"
             android:text="@string/repo_by_string"
             android:textAllCaps="true"
@@ -39,6 +60,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_above="@id/tv_stars_number"
+            android:layout_marginStart="@dimen/space_3x"
             android:textAppearance="@style/HeaderLargeText"
             android:textColor="@color/white"
             tools:text="Repo Author Name" />
@@ -48,6 +70,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentBottom="true"
+            android:layout_marginStart="@dimen/space_3x"
+            android:layout_marginBottom="@dimen/space_3x"
             android:alpha=".5"
             android:textAppearance="@style/MediumText"
             android:textColor="@color/white"
@@ -55,28 +79,17 @@
             tools:text="Number of Stars (234)" />
     </RelativeLayout>
 
-    <TextView
-        android:id="@+id/tv_back"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/space_3x"
-        android:clickable="true"
-        android:focusable="true"
-        android:gravity="center"
-        android:text="@string/back_string"
-        android:textAppearance="@style/NormalText"
-        app:drawableStartCompat="@drawable/ic_arrow_left"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
     <RelativeLayout
+        android:id="@+id/rl_content"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:padding="@dimen/space_3x"
+        android:visibility="gone"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/image_layout">
+        app:layout_constraintTop_toBottomOf="@id/rl_header"
+        tools:visibility="visible">
 
         <TextView
             android:id="@+id/tv_repo_title"
@@ -116,6 +129,7 @@
             android:textAppearance="@style/HeaderMediumText" />
 
         <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rv_commits"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_above="@id/container_share_repo"

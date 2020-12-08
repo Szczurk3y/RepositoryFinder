@@ -1,4 +1,4 @@
-package com.codeaddict.repository.domain
+package com.codeaddict.repository.data.api
 
 import com.codeaddict.repository.domain.RawRepo
 import com.squareup.moshi.Json

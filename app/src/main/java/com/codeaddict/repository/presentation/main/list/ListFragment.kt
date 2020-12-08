@@ -2,6 +2,7 @@ package com.codeaddict.repository.presentation.main.list
 
 import android.os.Bundle
 import android.view.View
+import androidx.core.os.bundleOf
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
@@ -28,10 +29,9 @@ class ListFragment : Fragment(R.layout.fragment_list) {
 
         _binding = FragmentListBinding.bind(view)
 
-        val adapter = ReposAdapter {
-            navigator.goTo(RouteDestination.Content.DetailsFragment)
+        val adapter = ReposAdapter { repo ->
+            navigator.goTo(RouteDestination.Content.DetailsFragment, bundleOf("repo" to repo))
         }
-
 
         binding.apply {
             rvReposList.setHasFixedSize(true)

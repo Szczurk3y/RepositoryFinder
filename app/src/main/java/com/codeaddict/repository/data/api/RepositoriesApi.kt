@@ -1,9 +1,9 @@
 package com.codeaddict.repository.data.api
 
-import com.codeaddict.repository.domain.RawRepo
-import com.codeaddict.repository.domain.RepositoriesResponse
+import com.codeaddict.repository.domain.RawCommit
 import retrofit2.http.GET
 import retrofit2.http.Headers
+import retrofit2.http.Path
 import retrofit2.http.Query
 
 interface RepositoriesApi {
@@ -20,7 +20,12 @@ interface RepositoriesApi {
         @Query("per_page") perPage: Int
     ): RepositoriesResponse
 
-//    @Headers("Content-Type:application/json")
-//    @GET("repos")
+    @Headers("Content-Type:application/json")
+    @GET("repos/{login}/{repo}/commits")
+    suspend fun getRepoDetails(
+        @Path("login") login: String,
+        @Path("repo") repo: String,
+        @Query("per_page") perPage: Int
+    ): List<RawCommit>
 
 }

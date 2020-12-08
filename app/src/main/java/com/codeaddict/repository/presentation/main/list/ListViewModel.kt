@@ -1,14 +1,16 @@
 package com.codeaddict.repository.presentation.main.list
 
+import android.os.Bundle
 import android.util.Log
+import androidx.core.os.bundleOf
 import androidx.hilt.Assisted
-import androidx.lifecycle.ViewModel
 import androidx.hilt.lifecycle.ViewModelInject
-import androidx.lifecycle.SavedStateHandle
-import androidx.lifecycle.switchMap
-import androidx.lifecycle.viewModelScope
+import androidx.lifecycle.*
+import androidx.paging.PagingData
 import androidx.paging.cachedIn
 import com.codeaddict.repository.data.api.RepositoryImpl
+import com.codeaddict.repository.domain.RawRepo
+import kotlinx.coroutines.launch
 
 
 class ListViewModel @ViewModelInject constructor(
@@ -22,7 +24,7 @@ class ListViewModel @ViewModelInject constructor(
 
     private val currentQuery = state.getLiveData(CURRENT_QUERY, DEFAULT_QUERY)
 
-    val repos = currentQuery.switchMap { queryString ->
+    val repos: LiveData<PagingData<RawRepo>> = currentQuery.switchMap { queryString ->
         repository.fetchRepos(queryString).cachedIn(viewModelScope)
     }
 

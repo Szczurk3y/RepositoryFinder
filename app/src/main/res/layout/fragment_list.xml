@@ -33,6 +33,18 @@
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toBottomOf="@id/tv_search" />
 
+    <TextView
+        android:id="@+id/tv_repositories"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/repositories_string"
+        android:textAppearance="@style/HeaderMediumText"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/search"
+        android:layout_marginTop="@dimen/space_3x"
+        android:layout_marginBottom="@dimen/space_3x"/>
+
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rv_repos_list"
         android:layout_width="match_parent"
@@ -42,7 +54,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/search"
+        app:layout_constraintTop_toBottomOf="@id/tv_repositories"
         tools:listitem="@layout/item_repo" />
 
     <ProgressBar
@@ -62,7 +74,7 @@
         android:layout_height="wrap_content"
         android:text="@string/repos_could_not_be_loaded_string"
         android:visibility="gone"
-        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tv_repositories"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
