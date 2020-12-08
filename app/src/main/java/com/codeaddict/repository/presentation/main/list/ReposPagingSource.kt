@@ -6,6 +6,7 @@ import com.codeaddict.repository.data.api.RepositoriesApi
 import com.codeaddict.repository.domain.RawRepo
 import retrofit2.HttpException
 import java.io.IOException
+import java.lang.Exception
 
 private const val REPOSITORIES_STARTING_PAGE_INDEX = 1
 
@@ -29,7 +30,7 @@ class ReposPagingSource(
                 nextKey = if (repos.isEmpty()) null else page + 1
             )
         } catch (exception: IOException) {
-            LoadResult.Error(exception)
+            LoadResult.Error(Exception("Connection error, check your connection and try again later"))
         } catch (exception: HttpException) {
             LoadResult.Error(exception)
         }

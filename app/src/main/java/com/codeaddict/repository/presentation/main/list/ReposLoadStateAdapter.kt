@@ -28,10 +28,16 @@ class ReposLoadStateAdapter(private val retry: () -> Unit) : LoadStateAdapter<Re
             RecyclerView.ViewHolder(binding.root) {
                 fun bind(loadState: LoadState) {
                     binding.apply {
-                        buttonRetry.setOnClickListener { retry.invoke() }
+                        btnRetry.setOnClickListener { retry.invoke() }
                         progressBar.isVisible = loadState is LoadState.Loading
-                        buttonRetry.isVisible = loadState !is LoadState.Loading
-                        textViewError.isVisible = loadState !is LoadState.Loading
+                        btnRetry.isVisible = loadState !is LoadState.Loading
+                        tvError.isVisible = loadState !is LoadState.Loading
+                        tvError.text = if (loadState is LoadState.Error) {
+                            loadState.error.localizedMessage
+                        } else {
+                            tvError.text // default
+                        }
+
                     }
                 }
             }

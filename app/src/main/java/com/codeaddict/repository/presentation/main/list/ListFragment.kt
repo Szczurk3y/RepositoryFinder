@@ -1,7 +1,6 @@
 package com.codeaddict.repository.presentation.main.list
 
 import android.os.Bundle
-import android.util.Log
 import android.view.View
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
@@ -61,7 +60,12 @@ class ListFragment : Fragment(R.layout.fragment_list) {
                 ) {
                     rvReposList.isVisible = false
                     tvEmpty.isVisible = true
-                } else {
+                } else if (loadState.source.refresh is LoadState.Error) {
+                    tvError.isVisible = true
+                    tvError.text = (loadState.source.refresh as LoadState.Error).error.localizedMessage
+                }
+
+                else {
                     tvEmpty.isVisible = false
                 }
             }

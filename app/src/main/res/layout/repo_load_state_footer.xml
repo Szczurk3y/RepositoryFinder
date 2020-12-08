@@ -12,15 +12,17 @@
         android:layout_height="wrap_content" />
 
     <TextView
-        android:id="@+id/text_view_error"
+        android:id="@+id/tv_error"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/results_could_not_be_loaded_string" />
+        android:text="@string/repos_could_not_be_loaded_string" />
 
     <Button
-        android:id="@+id/button_retry"
+        android:id="@+id/btn_retry"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:textAppearance="@style/DescriptionText"
+        android:backgroundTint="@color/blue_variant"
         android:text="@string/retry_string" />
 
 </LinearLayout>
