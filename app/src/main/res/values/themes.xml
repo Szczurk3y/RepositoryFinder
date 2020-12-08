@@ -9,14 +9,6 @@
         <item name="colorOnSecondary">@color/black</item>
         <!-- Customize your theme here. -->
         <item name="android:windowBackground">@color/white</item>
+        <item name="android:windowTranslucentStatus">true</item>
     </style>
-
-
-<!--    <style name="Widget.App.TextInputLayout" parent="Widget.MaterialComponents.TextInputLayout.OutlinedBox">-->
-<!--        <item name="materialThemeOverlay">@style/ThemeOverlay.App.TextInputLayout</item>-->
-<!--        <item name="shapeAppearance">@style/ShapeAppearance.App.SmallComponent</item>-->
-<!--        <item name="hintTextColor">?attr/colorOnSurface</item>-->
-<!--    </style>-->
-
-
 </resources>

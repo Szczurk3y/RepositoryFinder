@@ -11,6 +11,7 @@ import com.codeaddict.repository.R
 import com.codeaddict.repository.databinding.FragmentListBinding
 import com.codeaddict.repository.framework.navigation.INavigator
 import com.codeaddict.repository.framework.navigation.RouteDestination
+import com.codeaddict.repository.framework.toolbar.NoToolbar
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
 

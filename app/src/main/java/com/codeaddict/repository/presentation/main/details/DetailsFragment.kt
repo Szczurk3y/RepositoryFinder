@@ -15,6 +15,7 @@ import com.codeaddict.repository.databinding.FragmentListBinding
 import com.codeaddict.repository.domain.CommitListItem
 import com.codeaddict.repository.domain.RawRepo
 import com.codeaddict.repository.framework.navigation.INavigator
+import com.codeaddict.repository.framework.toolbar.NoToolbar
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
 
@@ -44,9 +45,10 @@ class DetailsFragment : Fragment(R.layout.fragment_details) {
 
         viewmodel.commitsLiveData.observe(viewLifecycleOwner) { commits ->
             binding.apply {
+                rvCommits.adapter = adapter.also { it.submitList(commits) }
+                progressBar.visibility = View.GONE
                 rlHeader.visibility = View.VISIBLE
                 rlContent.visibility = View.VISIBLE
-                tvBack.visibility = View.VISIBLE
                 tvBack.setOnClickListener { navigator.goBack() }
                 tvAuthorName.text = repo!!.owner.login
                 tvStarsNumber.text = repo.stargazersCount.toString()
@@ -57,9 +59,6 @@ class DetailsFragment : Fragment(R.layout.fragment_details) {
                     .transition(DrawableTransitionOptions.withCrossFade())
                     .error(R.drawable.ic_error)
                     .into(ivAuthorBackground)
-                rvCommits.adapter = adapter.also {
-                    it.submitList(commits)
-                }
             }
         }
 

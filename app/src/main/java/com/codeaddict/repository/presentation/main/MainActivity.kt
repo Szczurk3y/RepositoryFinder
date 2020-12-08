@@ -29,9 +29,6 @@ class MainActivity : AppCompatActivity(R.layout.activity_main) {
 
         toolbar.apply {
             initToolbar()
-            makeFullScreen(R.color.white)
         }
-
-
     }
 }

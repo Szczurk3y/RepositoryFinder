@@ -35,9 +35,9 @@ class RepositoryImpl @Inject constructor(private val repositoriesApi: Repositori
         return try {
             val items = repositoriesApi.getRepoDetails(login, repo, pageSize).map { raw_commit ->
                 CommitListItem(
-                    author = raw_commit.author.name,
-                    authorEmail = raw_commit.commit.author.email,
-                    message = raw_commit.commit.message
+                    author = raw_commit.author?.name ?: "Anonymous",
+                    authorEmail = raw_commit.commit.author?.email ?: "no@email.com",
+                    message = raw_commit.commit.message ?: "Commit without description."
                 )
             }
             DetailsResult.Success(items)
