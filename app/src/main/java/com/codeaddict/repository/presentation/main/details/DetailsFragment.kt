@@ -1,5 +1,7 @@
 package com.codeaddict.repository.presentation.main.details
 
+import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 import android.util.Log
 import android.view.View
@@ -42,17 +44,31 @@ class DetailsFragment : Fragment(R.layout.fragment_details) {
         }
 
         val adapter = CommitsAdapter()
+        val uri = Uri.parse(repo!!.url)
+        val viewRepoIntent = Intent(Intent.ACTION_VIEW, uri)
+        val sendIntent = Intent().apply {
+            action = Intent.ACTION_SEND
+            putExtra(Intent.EXTRA_TEXT, repo.url)
+            type = "text/plain"
+        }
 
         viewmodel.commitsLiveData.observe(viewLifecycleOwner) { commits ->
             binding.apply {
-                rvCommits.adapter = adapter.also { it.submitList(commits) }
-                progressBar.visibility = View.GONE
-                rlHeader.visibility = View.VISIBLE
-                rlContent.visibility = View.VISIBLE
-                tvBack.setOnClickListener { navigator.goBack() }
-                tvAuthorName.text = repo!!.owner.login
-                tvStarsNumber.text = repo.stargazersCount.toString()
-                tvRepoTitle.text = repo.name
+                rvCommits.adapter = adapter.apply { submitList(commits) }
+                progressBar.apply { visibility = View.GONE }
+                rlHeader.apply { visibility = View.VISIBLE }
+                rlContent.apply { visibility = View.VISIBLE }
+                tvBack.apply { setOnClickListener { navigator.goBack() }}
+                tvAuthorName.apply { text = repo.owner.login }
+                tvStarsNumber.apply { text = repo.stargazersCount.toString() }
+                tvRepoTitle.apply { text = repo.name }
+                tvViewOnline.apply { setOnClickListener { context.startActivity(viewRepoIntent) }}
+                containerShareRepo.apply {
+                    setOnClickListener {
+                        val shareIntent = Intent.createChooser(sendIntent, null)
+                        context.startActivity(shareIntent)
+                    }
+                }
                 Glide.with(view)
                     .load(repo.owner.avatarUrl)
                     .centerCrop()
