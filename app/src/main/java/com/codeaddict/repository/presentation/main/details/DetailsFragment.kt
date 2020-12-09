@@ -82,4 +82,9 @@ class DetailsFragment : Fragment(R.layout.fragment_details) {
             Toast.makeText(context, error, Toast.LENGTH_LONG).show()
         }
     }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
+    }
 }

@@ -1,34 +1,35 @@
 package com.codeaddict.repository.presentation.main.list
 
-import android.os.Bundle
-import android.util.Log
-import androidx.core.os.bundleOf
 import androidx.hilt.Assisted
 import androidx.hilt.lifecycle.ViewModelInject
 import androidx.lifecycle.*
 import androidx.paging.PagingData
 import androidx.paging.cachedIn
-import com.codeaddict.repository.data.api.RepositoryImpl
+import com.codeaddict.repository.data.RepositoryImpl
 import com.codeaddict.repository.domain.RawRepo
-import kotlinx.coroutines.launch
+import kotlinx.coroutines.ExperimentalCoroutinesApi
+import kotlinx.coroutines.channels.ConflatedBroadcastChannel
+import kotlinx.coroutines.flow.*
 
 
 class ListViewModel @ViewModelInject constructor(
     private val repository: RepositoryImpl,
     @Assisted state: SavedStateHandle
 ): ViewModel() {
+
     companion object {
-        private const val CURRENT_QUERY = "current_query"
-        private const val DEFAULT_QUERY = "%20"
+        private const val DEFAULT_QUERY = "%20" // The internet says it's a space in http requests
     }
 
-    private val currentQuery = state.getLiveData(CURRENT_QUERY, DEFAULT_QUERY)
+    private val searchChannel = ConflatedBroadcastChannel<String>()
 
-    val repos: LiveData<PagingData<RawRepo>> = currentQuery.switchMap { queryString ->
-        repository.fetchRepos(queryString).cachedIn(viewModelScope)
-    }
+    val repos: LiveData<PagingData<RawRepo>> = searchChannel.asFlow()
+            .debounce(500)
+            .flatMapLatest { query ->
+                repository.fetchRepos(query)
+            }.asLiveData().cachedIn(viewModelScope)
 
-    fun searchPhotos(query: String) {
-        currentQuery.value = query
+    fun searchRepos(query: String = DEFAULT_QUERY) {
+        searchChannel.offer(query)
     }
 }

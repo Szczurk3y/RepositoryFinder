@@ -25,6 +25,7 @@
 
 
     <include
+        android:id="@+id/search_include"
         layout="@layout/layout_search"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -41,7 +42,7 @@
         android:textAppearance="@style/HeaderMediumText"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/search"
+        app:layout_constraintTop_toBottomOf="@id/search_include"
         android:layout_marginTop="@dimen/space_3x"
         android:layout_marginBottom="@dimen/space_3x"/>
 
@@ -65,7 +66,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/search"
+        app:layout_constraintTop_toBottomOf="@id/search_include"
         tools:visibility="visible" />
 
     <TextView
@@ -102,7 +103,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/search"
+        app:layout_constraintTop_toBottomOf="@id/search_include"
         tools:visibility="visible" />
 
 
