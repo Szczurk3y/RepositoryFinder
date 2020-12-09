@@ -48,13 +48,13 @@ class ListFragment : Fragment(R.layout.fragment_list), CoroutineScope {
         }
 
         binding.apply {
-            rvReposList.setHasFixedSize(true)
-            rvReposList.itemAnimator = null
+            rvReposList.apply { setHasFixedSize(true) }
+            rvReposList.apply { itemAnimator = null }
             rvReposList.adapter = adapter.withLoadStateHeaderAndFooter(
                 header = ReposLoadStateAdapter { adapter.retry() },
                 footer = ReposLoadStateAdapter { adapter.retry() }
             )
-            btnRetry.setOnClickListener { adapter.retry() }
+            btnRetry.apply { setOnClickListener { adapter.retry() } }
             searchInclude.search.editText?.addTextChangedListener(object : TextWatcher {
                 override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {}
 
@@ -78,24 +78,24 @@ class ListFragment : Fragment(R.layout.fragment_list), CoroutineScope {
 
         adapter.addLoadStateListener { loadState ->
             binding.apply {
-                progressBar.isVisible = loadState.source.refresh is LoadState.Loading
-                rvReposList.isVisible = loadState.source.refresh is LoadState.NotLoading
-                btnRetry.isVisible = loadState.source.refresh is LoadState.Error
-                tvError.isVisible = loadState.source.refresh is LoadState.Error
+                progressBar.apply { isVisible = loadState.source.refresh is LoadState.Loading }
+                rvReposList.apply { isVisible = loadState.source.refresh is LoadState.NotLoading }
+                btnRetry.apply { isVisible = loadState.source.refresh is LoadState.Error }
+                tvError.apply { isVisible = loadState.source.refresh is LoadState.Error }
 
                 if (loadState.source.refresh is LoadState.NotLoading &&
                     loadState.append.endOfPaginationReached &&
                     adapter.itemCount < 1
                 ) {
-                    rvReposList.isVisible = false
-                    tvEmpty.isVisible = true
+                    rvReposList.apply { isVisible = false }
+                    tvEmpty.apply { isVisible = true }
                 } else if (loadState.source.refresh is LoadState.Error) {
-                    tvError.isVisible = true
-                    tvError.text = (loadState.source.refresh as LoadState.Error).error.localizedMessage
+                    tvError.apply { isVisible = true }
+                    tvError.apply { text = (loadState.source.refresh as LoadState.Error).error.localizedMessage }
                 }
 
                 else {
-                    tvEmpty.isVisible = false
+                    tvEmpty.apply { isVisible = false }
                 }
             }
         }
