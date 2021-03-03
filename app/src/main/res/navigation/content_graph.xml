@@ -5,10 +5,10 @@
 
     <fragment
         android:id="@+id/listFragment"
-        android:name="com.codeaddict.repository.presentation.main.list.ListFragment"
+        android:name="com.szczurk3y.repository.presentation.main.list.ListFragment"
         android:label="ListFragment" />
     <fragment
         android:id="@+id/detailsFragment"
-        android:name="com.codeaddict.repository.presentation.main.details.DetailsFragment"
+        android:name="com.szczurk3y.repository.presentation.main.details.DetailsFragment"
         android:label="DetailsFragment" />
 </navigation>
