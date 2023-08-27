@@ -9,3 +9,5 @@ This app helps you find and see the details of any repository on GitHub.
 - Retrofit
 - MVVM
 - Pager 3
+# Getting Started:
+download the app from Google Play Store
