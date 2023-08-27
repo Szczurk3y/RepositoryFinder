@@ -10,4 +10,4 @@ This app helps you find and see the details of any repository on GitHub.
 - MVVM
 - Pager 3
 # Getting Started:
-download the app from Google Play Store
+Download the app from the Google Play Store
